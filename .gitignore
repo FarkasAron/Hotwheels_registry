@@ -1,7 +1,0 @@
-vendor/
-error_log.log
-.idea/
-db.php
-helper.php
-html.php
-*.old
