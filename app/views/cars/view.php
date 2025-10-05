@@ -11,9 +11,8 @@
 
 <?php if (!empty($car['img_url'])): ?>
     <p>
-        <img src="<?= htmlspecialchars($car['img_url']) ?>" 
-             alt="<?= htmlspecialchars($car['name']) ?>" 
-             width="300">
+        <img src="image-proxy.php?url=<?= urlencode($car['img_url']) ?>" alt="<?= htmlspecialchars($car['name']) ?>" width="300">
+
     </p>
 <?php endif; ?>
 

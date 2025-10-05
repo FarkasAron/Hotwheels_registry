@@ -27,7 +27,7 @@
             <td><?= htmlspecialchars($car['color']) ?></td>
             <td><?= htmlspecialchars($car['year']) ?></td>
             <td><?= htmlspecialchars($car['series']) ?></td>
-            <td><?= htmlspecialchars($car['designer_name']) ?></td>
+            <td><?= htmlspecialchars($car['designer']) ?></td>
             <td>
                 <?php if ($car['img_url']): ?>
                     <img src="<?= htmlspecialchars($car['img_url']) ?>" alt="<?= htmlspecialchars($car['name']) ?>" width="80">

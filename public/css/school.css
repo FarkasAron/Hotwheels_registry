@@ -1,0 +1,522 @@
+:root {
+    --primary: #8c6239;
+    --danger: #c0392b;
+    --success: #1e7e34;
+    --gray-light: #f9f4ef;
+    --gray: #d8cfc4;
+    --gray-dark: #cbbba0;
+    --bg-light: #faf7f2;
+    --text: #3e3e3e;
+    --border: #d1bfa3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg-light);
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar {
+    background: #fff;
+    border-bottom: 1px solid var(--gray);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.nav-button button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--gray-light);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.nav-button button:hover {
+    background: var(--gray);
+    border-color: #bbb;
+}
+
+.nav-button button:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+
+aside, #side-menu {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-right: 1px solid var(--gray);
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+aside h3, #side-menu h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+aside ul, #side-menu ul {
+    list-style: none;
+}
+
+aside li, #side-menu li {
+    margin-bottom: 0.75rem;
+}
+
+aside a, #side-menu a {
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+aside a:hover, aside a:focus, #side-menu a:hover, #side-menu a:focus {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+aside a:focus, #side-menu a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+
+main {
+    margin-left: 220px;
+    padding: 1.5rem;
+}
+
+#banner {
+    background: linear-gradient(to right, #f3e5ab, #e7d6a0);
+    color: #5a4c3c;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#banner h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#banner h2 {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message i {
+    font-size: 1.25rem;
+}
+
+
+footer {
+    background: #fff8f0;
+    border-top: 1px solid var(--gray);
+    color: var(--text);
+}
+
+footer hr {
+    border-top: 1px solid var(--gray);
+    margin: 1rem 0;
+}
+
+footer p {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.admin-table {
+    background: #fff;
+    border: 1px solid var(--gray-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    width: 100%;
+}
+
+.admin-table thead {
+    background: var(--gray-dark);
+    color: #000;
+    font-weight: 600;
+}
+
+.admin-table th, .admin-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--gray);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.admins-table tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+}
+
+.admin-table tbody tr:nth-child(even) {
+    background: #fff;
+}
+
+.admin-table tbody tr:hover {
+    background: #e9ecef;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.admin-table button {
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.admin-table button:hover {
+    background: var(--gray);
+}
+
+.admin-table button:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.admin-table thead button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--gray-light);
+    border: 1px solid var(--border);
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+
+.fas, .far, .fab, .fa-edit {
+    margin-right: 0.5rem;
+    color: var(--primary);
+}
+
+.fa-edit:hover {
+    color: #0056b3;
+}
+
+.trash, .fa-trash.trash {
+    color: var(--danger);
+}
+
+.trash:hover, .fa-trash.trash:hover {
+    color: #a71d2a;
+}
+
+.plus, .fa-plus.plus {
+    color: var(--success);
+}
+
+.plus:hover, .fa-plus.plus:hover {
+    color: #1e7e34;
+}
+
+
+.float-right {
+    float: right;
+}
+
+.align-right {
+    text-align: right;
+}
+
+
+form fieldset {
+    border: 1px solid var(--gray);
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 4px;
+    max-width: 400px;
+    margin: 1.5rem auto;
+}
+
+form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+form hr {
+    border: none;
+    border-top: 1px solid var(--gray);
+    margin: 1rem 0;
+}
+
+form button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--gray-light);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background: var(--gray);
+    border-color: #bbb;
+}
+
+form button[type="submit"]:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+form a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s;
+    margin-left: 0.5rem;
+}
+
+form a:hover,
+form a:focus {
+    color: var(--primary);
+}
+
+form a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.fa-save {
+    color: var(--success);
+}
+
+.fa-save:hover {
+    color: #1e7e34;
+}
+
+.fa-cancel {
+    color: var(--danger);
+}
+
+.fa-cancel:hover {
+    color: #a71d2a;
+}
+
+
+@media (max-width: 768px) {
+    aside, #side-menu {
+        width: 150px;
+    }
+    main {
+        margin-left: 170px;
+    }
+    .nav-list, .admin-table .flex {
+        flex-direction: column;
+    }
+    .admin-table{
+        font-size: 0.875rem;
+    }
+    .admin-table th, .admin-table td{
+        padding: 0.5rem;
+    }
+    .container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    aside, #side-menu {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--gray);
+    }
+    main {
+        margin-left: 0;
+    }
+    .admin-table{
+        display: block;
+        overflow-x: auto;
+    }
+    .admin-table thead, .admins-table tbody, .admin-table tr{
+        display: block;
+    }
+    .admin-table th, .admin-table td{
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .admin-table .flex {
+        justify-content: flex-start;
+    }
+    .float-right {
+        float: none;
+    }
+}
+
+
+.hotel-table {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+.hotel-table thead {
+    background: linear-gradient(to right, #e8d9c3, #d3bfa6);
+    color: #3e3e3e;
+}
+
+.hotel-table th {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    padding: 1rem;
+}
+
+.hotel-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.card-table {
+    background: #faf7f2;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid var(--gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.table-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.btn-add {
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn-add:hover {
+    background: #7a4f29;
+}
+
+.card-table i.fa-edit    { color: #8c6239; }
+.card-table i.fa-trash   { color: #c0392b; }
+
+
+button i.fa-plus,
+button i.fa-edit,
+button i.fa-trash,
+.fa-plus,
+.fa-edit,
+.fa-trash {
+    background: none !important;
+}
+
+button:hover i.fa-plus,
+button:hover i.fa-edit,
+button:hover i.fa-trash,
+.fa-plus:hover,
+.fa-edit:hover,
+.fa-trash:hover {
+    background: none !important;
+}

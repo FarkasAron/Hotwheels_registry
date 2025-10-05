@@ -10,12 +10,12 @@ class CarModel implements CarRepositoryInterface {
     public static function getAll() {
         $pdo = Database::getInstance();
         $sql = "SELECT c.id, c.name, c.toy_code, col.color, y.year, s.series, c.notes, c.extras, c.packed, 
-                       d.designer_name, c.img_url, c.color_id, c.year_id, c.series_id, c.designer_id
+                       d.designer, c.img_url, c.color_id, c.year_id, c.series_id, c.designer_id
                 FROM hw_cars c
                 LEFT JOIN colors col ON c.color_id = col.id
                 LEFT JOIN years y ON c.year_id = y.id
                 LEFT JOIN series s ON c.series_id = s.id
-                LEFT JOIN designer d ON c.designer_id = d.id
+                LEFT JOIN designers d ON c.designer_id = d.id
                 ORDER BY y.year DESC, c.name ASC";
         return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -23,12 +23,12 @@ class CarModel implements CarRepositoryInterface {
     public static function getById($id) {
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT c.id, c.name, c.toy_code, col.color, y.year, s.series, c.notes, c.extras, c.packed, 
-                                      d.designer_name, c.img_url, c.color_id, c.year_id, c.series_id, c.designer_id
+                                      d.designer, c.img_url, c.color_id, c.year_id, c.series_id, c.designer_id
                                FROM hw_cars c
                                LEFT JOIN colors col ON c.color_id = col.id
                                LEFT JOIN years y ON c.year_id = y.id
                                LEFT JOIN series s ON c.series_id = s.id
-                               LEFT JOIN designer d ON c.designer_id = d.id
+                               LEFT JOIN designers d ON c.designer_id = d.id
                                WHERE c.id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -37,12 +37,12 @@ class CarModel implements CarRepositoryInterface {
     public static function search($keyword) {
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT c.id, c.name, c.toy_code, col.color, y.year, s.series, c.notes, c.extras, c.packed, 
-                                      d.designer_name, c.img_url, c.color_id, c.year_id, c.series_id, c.designer_id
+                                      d.designer, c.img_url, c.color_id, c.year_id, c.series_id, c.designer_id
                                FROM hw_cars c
                                LEFT JOIN colors col ON c.color_id = col.id
                                LEFT JOIN years y ON c.year_id = y.id
                                LEFT JOIN series s ON c.series_id = s.id
-                               LEFT JOIN designer d ON c.designer_id = d.id
+                               LEFT JOIN designers d ON c.designer_id = d.id
                                WHERE c.name LIKE :kw OR c.toy_code LIKE :kw");
         $stmt->execute(['kw' => "%$keyword%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
