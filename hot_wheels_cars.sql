@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Okt 05. 10:33
+-- Gép: localhost
+-- Létrehozás ideje: 2025. Okt 06. 13:50
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `colors` (
-  `id` int(3) DEFAULT NULL,
-  `Color` varchar(20) DEFAULT NULL
+  `id` int(3) NOT NULL,
+  `color` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `colors`
 --
 
-INSERT INTO `colors` (`id`, `Color`) VALUES
+INSERT INTO `colors` (`id`, `color`) VALUES
 (1, 'Fehér'),
 (2, 'Kék'),
 (3, 'Piros'),
@@ -152,7 +152,9 @@ INSERT INTO `colors` (`id`, `Color`) VALUES
 (113, 'Ultra piros'),
 (114, 'Fehér/Zöld'),
 (115, 'Halvány Sárga'),
-(116, 'Kék Fehér');
+(116, 'Kék Fehér'),
+(117, NULL),
+(233, 'Gyuri');
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,7 @@ INSERT INTO `colors` (`id`, `Color`) VALUES
 --
 
 CREATE TABLE `designers` (
-  `id` int(2) DEFAULT NULL,
+  `id` int(2) NOT NULL,
   `designer` varchar(18) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -212,7 +214,10 @@ INSERT INTO `designers` (`id`, `designer`) VALUES
 (40, 'Leeway Chang'),
 (41, 'Nathan Proch'),
 (42, 'Wayne Scott'),
-(43, 'Alvin Chan');
+(43, 'Alvin Chan'),
+(44, NULL),
+(87, 'Áron'),
+(88, '');
 
 -- --------------------------------------------------------
 
@@ -221,7 +226,7 @@ INSERT INTO `designers` (`id`, `designer`) VALUES
 --
 
 CREATE TABLE `hw_cars` (
-  `id` int(3) DEFAULT NULL,
+  `id` int(3) NOT NULL,
   `name` varchar(47) DEFAULT NULL,
   `toy_code` varchar(11) DEFAULT NULL,
   `color_id` int(3) DEFAULT NULL,
@@ -806,7 +811,7 @@ INSERT INTO `hw_cars` (`id`, `name`, `toy_code`, `color_id`, `year_id`, `series_
 (564, 'Scion xB', 'V5534', 106, 10, 2, '', '', 0, 33, 'https://static.wikia.nocookie.net/hotwheels/images/d/d6/Scion_xB_-_12_Code_Cars.JPG/revision/latest/scale-to-width-down/1000?cb=20120715213325'),
 (565, 'Shelby Cobra \"Daytona\" Coupe', 'HTF10', 17, 12, 2, '', '', 1, 7, ''),
 (566, 'Shelby Cobra 427 S/C', 'V0595', 107, 5, 19, ' ', '', 0, 7, ''),
-(567, 'Shock Factor', '???', 14, 46, 14, '', '', 0, 7, 'https://static.wikia.nocookie.net/hotwheels/images/5/55/20201227_163151.jpg/revision/latest/scale-to-width-down/1000?cb=20210222213007'),
+(567, 'Shock Factor', '???', 0, 0, 0, '', '', 0, 0, 'https://static.wikia.nocookie.net/hotwheels/images/5/55/20201227_163151.jpg/revision/latest/scale-to-width-down/1000?cb=20210222213007'),
 (568, 'Small Bloc', 'HRY92', 108, 12, 2, '', '', 1, 23, ''),
 (569, 'Smash Hit / Smak Bak', '7821', 12, 24, 48, 'Hiányos', '', 0, 7, ''),
 (570, 'Sol-Aire CX4', '5902', 36, 47, 36, '', '', 0, 7, 'https://static.wikia.nocookie.net/hotwheels/images/8/88/Sol_Aire_unptd.JPG/revision/latest?cb=20091010213743'),
@@ -869,7 +874,7 @@ INSERT INTO `hw_cars` (`id`, `name`, `toy_code`, `color_id`, `year_id`, `series_
 --
 
 CREATE TABLE `series` (
-  `id` int(3) DEFAULT NULL,
+  `id` int(3) NOT NULL,
   `series` varchar(56) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -999,7 +1004,9 @@ INSERT INTO `series` (`id`, `series`) VALUES
 (119, 'Off Road Trucks'),
 (120, 'Car Culture: Modern Classics'),
 (121, 'Classics (Series 1)'),
-(122, 'Pull-Back Speeders: Factory Fresh');
+(122, 'Pull-Back Speeders: Factory Fresh'),
+(123, NULL),
+(245, 'STH');
 
 -- --------------------------------------------------------
 
@@ -1008,7 +1015,7 @@ INSERT INTO `series` (`id`, `series`) VALUES
 --
 
 CREATE TABLE `years` (
-  `id` int(2) DEFAULT NULL,
+  `id` int(2) NOT NULL,
   `year` varchar(21) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -1066,7 +1073,77 @@ INSERT INTO `years` (`id`, `year`) VALUES
 (47, '1984'),
 (48, '1993'),
 (49, '2012/2013'),
-(50, '1988');
+(50, '1988'),
+(51, NULL),
+(101, '2030');
+
+--
+-- Indexek a kiírt táblákhoz
+--
+
+--
+-- A tábla indexei `colors`
+--
+ALTER TABLE `colors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `designers`
+--
+ALTER TABLE `designers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `hw_cars`
+--
+ALTER TABLE `hw_cars`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `series`
+--
+ALTER TABLE `series`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `years`
+--
+ALTER TABLE `years`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `colors`
+--
+ALTER TABLE `colors`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+
+--
+-- AUTO_INCREMENT a táblához `designers`
+--
+ALTER TABLE `designers`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+
+--
+-- AUTO_INCREMENT a táblához `hw_cars`
+--
+ALTER TABLE `hw_cars`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1241;
+
+--
+-- AUTO_INCREMENT a táblához `series`
+--
+ALTER TABLE `series`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+
+--
+-- AUTO_INCREMENT a táblához `years`
+--
+ALTER TABLE `years`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
