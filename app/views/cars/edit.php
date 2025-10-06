@@ -12,24 +12,24 @@
                value="<?= htmlspecialchars($car['toy_code'] ?? '') ?>">
     </div>
     <div class="col-md-3">
-        <label class="form-label">Szín ID</label>
-        <input type="number" name="color_id" class="form-control" 
-               value="<?= htmlspecialchars($car['color_id'] ?? '') ?>">
+        <label class="form-label">Szín</label>
+        <input type="text" name="color_id" class="form-control" 
+               value="<?= htmlspecialchars($car['color'] ?? '') ?>">
     </div>
     <div class="col-md-3">
-        <label class="form-label">Év ID</label>
-        <input type="number" name="year_id" class="form-control" 
-               value="<?= htmlspecialchars($car['year_id'] ?? '') ?>">
+        <label class="form-label">Év</label>
+        <input type="text" name="year_id" class="form-control" 
+               value="<?= htmlspecialchars($car['year'] ?? '') ?>">
     </div>
     <div class="col-md-3">
-        <label class="form-label">Sorozat ID</label>
-        <input type="number" name="series_id" class="form-control" 
-               value="<?= htmlspecialchars($car['series_id'] ?? '') ?>">
+        <label class="form-label">Sorozat</label>
+        <input type="text" name="series_id" class="form-control" 
+               value="<?= htmlspecialchars($car['series'] ?? '') ?>">
     </div>
     <div class="col-md-3">
-        <label class="form-label">Tervező ID</label>
-        <input type="number" name="designer_id" class="form-control" 
-               value="<?= htmlspecialchars($car['designer_id'] ?? '') ?>">
+        <label class="form-label">Tervező</label>
+        <input type="text" name="designer_id" class="form-control" 
+               value="<?= htmlspecialchars($car['designer'] ?? '') ?>">
     </div>
     <div class="col-12">
         <label class="form-label">Megjegyzés</label>

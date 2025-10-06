@@ -3,10 +3,10 @@ namespace App\Routing;
 
 class Router {
     public function dispatch() {
-        $controllerName = $_GET['controller'] ?? 'cars';
-        $actionName = $_GET['action'] ?? 'index';
+            $controllerName = $_GET['controller'] ?? 'cars';
+            $actionName = $_GET['action'] ?? 'index';
 
-        $controllerClass = 'App\\Controllers\\' . ucfirst($controllerName) . 'Controller';
+            $controllerClass = 'App\\Controllers\\' . ucfirst($controllerName) . 'Controller';
 
         if (class_exists($controllerClass)) {
             $controller = new $controllerClass();
