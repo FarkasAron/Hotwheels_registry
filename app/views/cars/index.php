@@ -13,6 +13,50 @@
         <button type="submit" class="btn btn-primary w-100">Keresés</button>
     </div>
 </form>
+<form method="get" action="" class="row g-3 mb-4">
+    <input type="hidden" name="controller" value="cars">
+    <input type="hidden" name="action" value="index">
+
+    <div class="col-md-3">
+        <label for="color_id" class="form-label">Szín</label>
+        <select name="color_id" id="color_id" class="form-select">
+            <option value="">-- Mind --</option>
+            <?php foreach ($colors as $color): ?>
+                <option value="<?= $color['id'] ?>" <?= ($filters['color_id'] == $color['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($color['color']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="year_id" class="form-label">Év</label>
+        <select name="year_id" id="year_id" class="form-select">
+            <option value="">-- Mind --</option>
+            <?php foreach ($years as $year): ?>
+                <option value="<?= $year['id'] ?>" <?= ($filters['year_id'] == $year['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($year['year']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="designer_id" class="form-label">Tervező</label>
+        <select name="designer_id" id="designer_id" class="form-select">
+            <option value="">-- Mind --</option>
+            <?php foreach ($designers as $designer): ?>
+                <option value="<?= $designer['id'] ?>" <?= ($filters['designer_id'] == $designer['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($designer['designer']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">Szűrés</button>
+    </div>
+</form>
 
 <div class="table-responsive">
 <table class="table table-striped table-hover align-middle">

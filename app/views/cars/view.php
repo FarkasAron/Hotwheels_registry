@@ -1,8 +1,8 @@
 <div class="card mb-3">
     <div class="row g-0">
         <?php if ($car['img_url']): ?>
-        <div class="col-md-4">
-            <img src="<?= htmlspecialchars($car['img_url']) ?>" class="img-fluid rounded-start" alt="<?= htmlspecialchars($car['name']) ?>">
+        <div class="col-md-4 d-flex justify-content-center">
+            <img src="<?= htmlspecialchars($car['img_url']) ?>" class="img-fluid rounded-start" alt="<?= htmlspecialchars($car['name']) ?>" >>
         </div>
         <?php endif; ?>
         <div class="col-md-8">

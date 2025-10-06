@@ -6,16 +6,32 @@ use App\Models\CarModel;
 class CarsController extends BaseController {
 
     public function index() {
-        $q = $_GET['q'] ?? null;
+        $filters = [
+            'color_id'    => $_GET['color_id'] ?? null,
+            'year_id'     => $_GET['year_id'] ?? null,
+            'designer_id' => $_GET['designer_id'] ?? null,
+        ];
 
-        if ($q) {
-            $cars = CarModel::search($q);
+        if ($filters['color_id'] || $filters['year_id'] || $filters['designer_id']) {
+            $cars = \App\Models\CarModel::filter($filters);
         } else {
-            $cars = CarModel::getAll();
+            $cars = \App\Models\CarModel::getAll();
         }
 
-        $this->render('cars/index', ['cars' => $cars]);
+        $pdo = \App\Database\Database::getInstance();
+        $colors    = $pdo->query("SELECT id, color FROM colors ORDER BY color")->fetchAll(\PDO::FETCH_ASSOC);
+        $years     = $pdo->query("SELECT id, year FROM years ORDER BY year DESC")->fetchAll(\PDO::FETCH_ASSOC);
+        $designers = $pdo->query("SELECT id, designer FROM designers ORDER BY designer")->fetchAll(\PDO::FETCH_ASSOC);
+
+        $this->render('cars/index', [
+            'cars'      => $cars,
+            'colors'    => $colors,
+            'years'     => $years,
+            'designers' => $designers,
+            'filters'   => $filters
+        ]);
     }
+
 
 
     public function view($id = null) {
@@ -40,20 +56,35 @@ class CarsController extends BaseController {
         $this->render('cars/create');
     }
 
-    public function edit() {
-        $id = $_GET['id'] ?? null;
-        if (!$id) { echo "Nincs ID megadva."; return; }
+    public function edit($id = null) {
+        $id = $id ?? ($_GET['id'] ?? null);
+
+        if (!$id) {
+            die("Hiányzó ID a szerkesztéshez.");
+        }
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = $this->collectFormData();
-            CarModel::update($id, $data);
-            header("Location: /?controller=cars&action=index");
+            // ID biztosítása POST‑ból
+            $id = $_POST['id'] ?? $id;
+
+            \App\Models\CarModel::update($id, $_POST);
+
+            header('Location: /?controller=cars&action=view&id=' . urlencode($id));
             exit;
         }
 
-        $car = CarModel::getById($id);
+        $car = \App\Models\CarModel::getById($id);
+        if (!$car) {
+            echo "<p class='alert alert-danger'>Nem található ilyen autó.</p>";
+            return;
+        }
+
+
         $this->render('cars/edit', ['car' => $car]);
     }
+
+
 
     public function delete() {
         $id = $_GET['id'] ?? null;

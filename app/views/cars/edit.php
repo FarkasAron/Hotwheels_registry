@@ -29,7 +29,7 @@
     <div class="col-md-3">
         <label class="form-label">Tervező</label>
         <input type="text" name="designer_id" class="form-control" 
-               value="<?= htmlspecialchars($car['designer'] ?? '') ?>">
+               value="<?= htmlspecialchars($car['designer_name'] ?? '') ?>">
     </div>
     <div class="col-12">
         <label class="form-label">Megjegyzés</label>
@@ -53,4 +53,6 @@
         <button type="submit" class="btn btn-warning">Mentés</button>
         <a href="/?controller=cars&action=index" class="btn btn-secondary">Mégse</a>
     </div>
+    <input type="hidden" name="id" value="<?= htmlspecialchars($car['id']) ?>">
+
 </form>
