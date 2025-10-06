@@ -6,20 +6,29 @@ use App\Models\CarModel;
 class CarsController extends BaseController {
 
     public function index() {
-        $keyword = $_GET['search'] ?? null;
-        $cars = $keyword ? CarModel::search($keyword) : CarModel::getAll();
-        $this->render('cars/index', ['cars' => $cars, 'keyword' => $keyword]);
+        $q = $_GET['q'] ?? null;
+
+        if ($q) {
+            $cars = CarModel::search($q);
+        } else {
+            $cars = CarModel::getAll();
+        }
+
+        $this->render('cars/index', ['cars' => $cars]);
     }
 
-    public function view() {
-        $id = $_GET['id'] ?? null;
-        if ($id) {
-            $car = CarModel::getById($id);
-            $this->render('cars/view', ['car' => $car]);
-        } else {
-            echo "Nincs ID megadva.";
+
+    public function view($id = null) {
+        if ($id === null && isset($_GET['id'])) {
+            $id = $_GET['id'];
         }
-    }
+        if (!$id) {
+            die("Hiányzó ID!");
+        }
+        $car = CarModel::getById($id);
+        $this->render('cars/view', ['car' => $car]);
+}
+
 
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
